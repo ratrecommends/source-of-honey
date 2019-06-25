@@ -1,3 +1,17 @@
 function init(self)
     msg.post("@render:", "use_fixed_fit_projection")
 end
+
+function on_message(self, message_id, message, sender)
+    if message_id == hash("pressed") then
+        if message.id then
+            if self.selection then
+                msg.post(self.selection, "deselect")
+            end
+            msg.post(message.id, "select")
+            self.selection = message.id
+        elseif self.selection then
+            msg.post(self.selection, "set_target", {x = message.x, y = message.y})
+        end
+    end
+end

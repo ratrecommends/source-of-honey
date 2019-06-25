@@ -1,0 +1,35 @@
+function init(self)
+    msg.post("#selection", "disable")
+    self.target = go.get_position()
+    -- Add initialization code here
+    -- Remove this function if not needed
+end
+
+function final(self)
+    -- Add finalization code here
+    -- Remove this function if not needed
+end
+
+function update(self, dt)
+    -- TODO move to target, wiggle a little
+end
+
+function on_message(self, message_id, message, sender)
+    if message_id == hash("select") then
+        msg.post("#selection", "enable")
+    elseif message_id == hash("deselect") then
+        msg.post("#selection", "disable")
+    elseif message_id == hash("set_target") then 
+        self.target = vmath.vector3(message.x, message.y, 0)
+    end
+end
+
+function on_input(self, action_id, action)
+    -- Add input-handling code here
+    -- Remove this function if not needed
+end
+
+function on_reload(self)
+    -- Add reload-handling code here
+    -- Remove this function if not needed
+end

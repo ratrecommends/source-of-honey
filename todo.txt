@@ -1,0 +1,8 @@
+Gameplay:
+- give orders to bees
+
+What bees do:
+- pollinate flowers
+- produce bee
+- survive winter
+- defend against bears
