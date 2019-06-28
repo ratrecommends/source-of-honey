@@ -17,7 +17,7 @@ title = Source of Honey
 dependencies = https://github.com/britzl/defold-input/archive/1.6.0.zip
 
 [render]
-clear_color_red = 1
-clear_color_green = 1
-clear_color_blue = 1
+clear_color_red = 0.3
+clear_color_green = 0.6
+clear_color_blue = 0.3
 

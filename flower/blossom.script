@@ -1,0 +1,22 @@
+go.property("refill", 5)
+
+local function set_pollen(self, x)
+    self.pollen = x
+    if x then
+        particlefx.play("#fx")
+    else
+        particlefx.stop("#fx")
+    end
+end
+
+function init(self)
+    set_pollen(self, true)
+end
+
+function on_message(self, message_id, message, sender)
+    if message_id == hash("pollinate") and self.pollen then
+        set_pollen(self, false)
+        timer.delay(self.refill, false, function() set_pollen(self, true) end)
+        msg.post(sender, "collect")
+    end
+end

@@ -1,17 +1,17 @@
+go.property("speed", 500)
+
+local function set_pollen_count(self, n)
+    self.pollen_count = n
+    if n > 0 then
+        particlefx.play("#pollenfx")
+    else 
+        particlefx.stop("#pollenfx")
+    end
+end
+
 function init(self)
     msg.post("#selection", "disable")
-    self.target = go.get_position()
-    -- Add initialization code here
-    -- Remove this function if not needed
-end
-
-function final(self)
-    -- Add finalization code here
-    -- Remove this function if not needed
-end
-
-function update(self, dt)
-    -- TODO move to target, wiggle a little
+    self.pollen_count = 0
 end
 
 function on_message(self, message_id, message, sender)
@@ -20,16 +20,15 @@ function on_message(self, message_id, message, sender)
     elseif message_id == hash("deselect") then
         msg.post("#selection", "disable")
     elseif message_id == hash("set_target") then 
-        self.target = vmath.vector3(message.x, message.y, 0)
+        local target = vmath.vector3(message.x, message.y, 0)
+        local distance = vmath.length(go.get_position() - target)
+        go.animate(".", "position", go.PLAYBACK_ONCE_FORWARD, target, go.EASING_LINEAR, distance / go.get("#bee", "speed"))
+    elseif message_id == hash("trigger_response") and message.enter and message.other_group == hash("blossom") then
+        msg.post(message.other_id, "pollinate")
+    elseif message_id == hash("collect") then
+        set_pollen_count(self, self.pollen_count + 1)
+    elseif message_id == hash("trigger_response") and message.enter and message.other_group == hash("hive") and self.pollen_count > 0 then
+        msg.post(message.other_id, "give", {count = self.pollen_count})
+        set_pollen_count(self, 0)
     end
-end
-
-function on_input(self, action_id, action)
-    -- Add input-handling code here
-    -- Remove this function if not needed
-end
-
-function on_reload(self)
-    -- Add reload-handling code here
-    -- Remove this function if not needed
 end
