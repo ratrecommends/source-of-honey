@@ -7,6 +7,9 @@ images {
 images {
   image: "/bee/selection.png"
 }
+images {
+  image: "/bear/bear.png"
+}
 animations {
   id: "bee"
   images {

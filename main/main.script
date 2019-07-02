@@ -1,5 +1,12 @@
 function init(self)
     msg.post("@render:", "use_fixed_fit_projection")
+    math.randomseed(os.clock())
+    timer.delay(10, true, function ()
+        local delta = vmath.rotate(vmath.quat_rotation_z(math.rad(math.random(0, 360))), vmath.vector3(2000, 0, 0))
+        local pos = go.get_position("/hive/root") + delta
+        collectionfactory.create("#bearfactory", pos)
+    end)
+    
 end
 
 function on_message(self, message_id, message, sender)
@@ -14,4 +21,8 @@ function on_message(self, message_id, message, sender)
             msg.post(self.selection, "set_target", {x = message.x, y = message.y})
         end
     end
+end
+
+function on_reload(self) 
+    
 end

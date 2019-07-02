@@ -1,4 +1,4 @@
-go.property("speed", 500)
+go.property("speed", 200)
 
 local function set_pollen_count(self, n)
     self.pollen_count = n

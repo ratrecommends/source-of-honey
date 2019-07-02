@@ -1,0 +1,31 @@
+go.property("speed", 20)
+
+function init(self)
+    go.set_rotation(vmath.quat_rotation_z(math.rad(-15)))
+    go.animate(".", "rotation", go.PLAYBACK_LOOP_PINGPONG, vmath.quat_rotation_z(math.rad(15)), go.EASING_INOUTQUINT, 1.7)
+    local hive_pos = go.get_position("/hive/root")
+    local distance_to_hive = vmath.length(go.get_position() - hive_pos)
+    local target_pos = vmath.lerp((distance_to_hive - 100) / distance_to_hive, go.get_position(), hive_pos)
+    local move_distance = vmath.length(go.get_position() - target_pos)
+    go.animate(".", "position", go.PLAYBACK_ONCE_FORWARD, target_pos, go.EASING_LINEAR, move_distance / go.get("#bear", "speed"))
+end
+
+function final(self)
+    -- Add finalization code here
+    -- Remove this function if not needed
+end
+
+function update(self, dt)
+    -- Add update code here
+    -- Remove this function if not needed
+end
+
+function on_message(self, message_id, message, sender)
+    -- Add message-handling code here
+    -- Remove this function if not needed
+end
+
+function on_input(self, action_id, action)
+    -- Add input-handling code here
+    -- Remove this function if not needed
+end

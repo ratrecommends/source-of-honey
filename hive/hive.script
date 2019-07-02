@@ -5,6 +5,6 @@ end
 function on_message(self, message_id, message, sender)
 	if message_id == hash("give") then
 		self.honey = self.honey + message.count
-		pprint(self.honey)
+		msg.post("/sys#ui", "honey", {count = self.honey})
 	end
 end

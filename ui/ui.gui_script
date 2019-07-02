@@ -1,0 +1,5 @@
+function on_message(self, message_id, message, sender)
+    if message_id == hash("honey") then
+        gui.set_text(gui.get_node(hash("honey")), "Honey: " .. message.count)
+    end
+end

@@ -24,7 +24,7 @@ collection_instances {
   collection: "/hive/hive.collection"
   position {
     x: 960.0
-    y: 680.0
+    y: 491.0
     z: 0.0
   }
   rotation {
@@ -65,6 +65,46 @@ collection_instances {
   position {
     x: 1639.0
     y: 200.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+collection_instances {
+  id: "orange-flower1"
+  collection: "/flower/orange-flower.collection"
+  position {
+    x: 327.0
+    y: 695.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+collection_instances {
+  id: "orange-flower2"
+  collection: "/flower/orange-flower.collection"
+  position {
+    x: 1503.0
+    y: 698.0
     z: 0.0
   }
   rotation {
@@ -127,6 +167,21 @@ embedded_instances {
   "    type: PROPERTY_TYPE_BOOLEAN\n"
   "  }\n"
   "}\n"
+  "components {\n"
+  "  id: \"ui\"\n"
+  "  component: \"/ui/ui.gui\"\n"
+  "  position {\n"
+  "    x: 0.0\n"
+  "    y: 0.0\n"
+  "    z: 0.0\n"
+  "  }\n"
+  "  rotation {\n"
+  "    x: 0.0\n"
+  "    y: 0.0\n"
+  "    z: 0.0\n"
+  "    w: 1.0\n"
+  "  }\n"
+  "}\n"
   "embedded_components {\n"
   "  id: \"collisionobject\"\n"
   "  type: \"collisionobject\"\n"
@@ -161,6 +216,24 @@ embedded_instances {
   "linear_damping: 0.0\\n"
   "angular_damping: 0.0\\n"
   "locked_rotation: false\\n"
+  "\"\n"
+  "  position {\n"
+  "    x: 0.0\n"
+  "    y: 0.0\n"
+  "    z: 0.0\n"
+  "  }\n"
+  "  rotation {\n"
+  "    x: 0.0\n"
+  "    y: 0.0\n"
+  "    z: 0.0\n"
+  "    w: 1.0\n"
+  "  }\n"
+  "}\n"
+  "embedded_components {\n"
+  "  id: \"bearfactory\"\n"
+  "  type: \"collectionfactory\"\n"
+  "  data: \"prototype: \\\"/bear/bear.collection\\\"\\n"
+  "load_dynamically: false\\n"
   "\"\n"
   "  position {\n"
   "    x: 0.0\n"
